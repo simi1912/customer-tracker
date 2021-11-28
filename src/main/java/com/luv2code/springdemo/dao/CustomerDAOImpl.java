@@ -25,7 +25,7 @@ import java.util.List;
 @Repository
 public class CustomerDAOImpl implements CustomerDAO{
 
-    private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
 
     @Autowired
     public CustomerDAOImpl(SessionFactory sessionFactory) {
@@ -40,6 +40,12 @@ public class CustomerDAOImpl implements CustomerDAO{
         List<Customer> customers = query.getResultList();
 
         return customers;
+    }
+
+    @Override
+    public void saveCustomer(Customer customer) {
+        Session session = sessionFactory.getCurrentSession();
+        session.save(customer);
     }
 
 }

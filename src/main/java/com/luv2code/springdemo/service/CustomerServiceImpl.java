@@ -24,11 +24,10 @@ import java.util.List;
 @Service
 public class CustomerServiceImpl implements CustomerService{
 
-    private CustomerDAO customerDAO;
+    private final CustomerDAO customerDAO;
 
     @Autowired
     public CustomerServiceImpl(CustomerDAO customerDAO) {
-        System.out.println("In Service!!!");
         this.customerDAO = customerDAO;
     }
 
@@ -36,5 +35,11 @@ public class CustomerServiceImpl implements CustomerService{
     @Transactional
     public List<Customer> getCustomers() {
         return customerDAO.getCustomers();
+    }
+
+    @Override
+    @Transactional
+    public void saveCustomer(Customer customer) {
+        customerDAO.saveCustomer(customer);
     }
 }
