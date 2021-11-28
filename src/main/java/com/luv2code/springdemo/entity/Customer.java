@@ -13,6 +13,8 @@
 
 package com.luv2code.springdemo.entity;
 
+import com.luv2code.springdemo.dao.CustomerDAO;
+
 import javax.persistence.*;
 
 @Entity
